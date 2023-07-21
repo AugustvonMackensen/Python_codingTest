@@ -11,8 +11,8 @@ def solution(numer1, denom1, numer2, denom2):
             addition_numer = numer1 * denom2 + numer2 * denom1
         else:
             addition_denom = getLcm(denom1, denom2)
-            addition_numer = numer1 * getMultiplicationValue(numer1, addition_denom) \
-                             + numer2 * getMultiplicationValue(numer2, addition_denom)
+            addition_numer = numer1 * (addition_denom // denom1) \
+                             + numer2 * (addition_denom //denom2)
 
 
     if addition_numer % addition_denom == 0:
@@ -36,7 +36,6 @@ def isPrime(num):
 
     return True
 
-
 def getGcd(num1, num2):
     gcd = 1
     if not (isPrime(num1) and isPrime(num2)):
@@ -55,11 +54,8 @@ def getLcm(num1, num2):
     return gcd * mul1 * mul2
 
 
-def getMultiplicationValue(num, div):
-    return num // div
-
-
 if __name__ == '__main__':
     print(solution(1, 2, 3, 4))
     print(solution(9, 2, 1, 3))
     print(solution(4, 4, 4, 4))
+    print(solution(1, 4, 2, 6))
